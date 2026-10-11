@@ -1,11 +1,11 @@
-export interface User {
+ export interface User {
   id: string;
   name: string;
   email: string;
+  provider: string;
+  role: 'adopter' | 'admin';
+  token?: string;
   avatar?: string;
-  provider: 'local' | 'google';
-  role?: 'adopter' | 'shelter_staff' | 'admin';
-  createdAt?: string;
 }
 
 export type AuthMode = 'login' | 'register';
