@@ -20,7 +20,10 @@ export const BrowsePets: React.FC<BrowsePetsProps> = ({ currentUser }) => {
   useEffect(() => {
     const loadPets = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/pets');
+        const response = await fetch(
+  (import.meta.env.VITE_API_URL || 'http://localhost:8080/api/auth')
+    .replace('/api/auth', '/api/pets')
+)
 
         if (!response.ok) {
           throw new Error('Failed to load pets');

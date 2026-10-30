@@ -68,7 +68,10 @@ console.log("Numeric ID:", petId);
     setSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/adoption-requests', {
+      const response = await fetch(
+  (import.meta.env.VITE_API_URL || 'http://localhost:8080/api/auth')
+    .replace('/api/auth', '/api/adoption-requests'),
+  {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

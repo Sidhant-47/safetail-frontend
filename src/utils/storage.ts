@@ -1,7 +1,9 @@
 
 import type { FeedbackSubmission, FeedbackStatus } from '../types';
 
-const API_URL = 'http://localhost:8080/api/reviews';
+const API_URL =
+  (import.meta.env.VITE_API_URL || 'http://localhost:8080/api/auth')
+    .replace('/api/auth', '/api/reviews');
 
 type ApiReview = {
   review_id: number;

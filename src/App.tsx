@@ -15,7 +15,7 @@ import type { User, AuthMode } from './types/auth';
 import { getFeedbackList } from './utils/storage';
 import { getCurrentUser, logoutUser } from './utils/auth';
 
-const API_URL = 'http://localhost:8080/api/adoption-requests';
+const API_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:8080/api/auth'}`.replace('/api/auth', '/api/adoption-requests');
 const ADMIN_EMAIL = '25104095@apsit.edu.in';
 
 interface AdoptionRequest {
