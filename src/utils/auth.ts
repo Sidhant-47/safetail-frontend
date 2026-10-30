@@ -112,10 +112,16 @@ export async function registerWithLocal(
   return loginWithLocal(email, password);
 }
 
-export async function loginWithGoogle(): Promise<User> {
-  throw new Error(
-    'Google sign-in is not configured yet. Please use email and password.'
-  );
+export async function loginWithGoogle(
+  credential: string
+): Promise<User> {
+  const data = await postAuth('google', { credential });
+
+  const user = toUser(data);
+  user.provider = 'google';
+
+  saveUser(user);
+  return user;
 }
 
 export function logoutUser(): void {
